@@ -53,9 +53,8 @@ const CurrencyComponent = ({activeUser}) => {
 
   return (
     <>
-    <p> active user: {activeUser.firstName} {activeUser.lastName}</p>
-    <p></p>
-      <h1>Convert</h1>
+    <p> Active user: {activeUser.firstName} {activeUser.lastName}</p>
+    <h1>Convert</h1>
       <CurrencyRow
         currencyOptions={currencyOptions}
         selectedCurrency={fromCurrency}

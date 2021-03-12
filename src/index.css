@@ -71,3 +71,7 @@ transition: all .3s;
 .errorname{
   color: red;
 }
+
+.welcome{
+  font-weight: 600;
+}
