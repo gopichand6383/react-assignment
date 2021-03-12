@@ -5,14 +5,18 @@ import Home from "./components/HomeComponent";
 import NavComponent from "./components/NavComponent";
 import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
+import { createBrowserHistory } from "history";
 
 import {BrowserRouter, Route , Switch} from "react-router-dom";
 
 
 function App() {
   
+  const history = createBrowserHistory();
+
+  
   return (
-    <BrowserRouter>
+    <BrowserRouter history={history}>
     <div className="App">
 <NavComponent/>
 <div className="auth-wrapper">

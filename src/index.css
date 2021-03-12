@@ -68,3 +68,6 @@ transition: all .3s;
 .forgot-password a{
   color: #167bff;
 }
+.errorname{
+  color: red;
+}

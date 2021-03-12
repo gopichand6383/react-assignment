@@ -4,7 +4,7 @@ import CurrencyRow from './CurrencyRow'
 
 const BASE_URL = 'https://api.exchangeratesapi.io/latest'
 
-function CurrencyComponent() {
+const CurrencyComponent = ({activeUser}) => {
   const [currencyOptions, setCurrencyOptions] = useState([])
   const [fromCurrency, setFromCurrency] = useState()
   const [toCurrency, setToCurrency] = useState()
@@ -53,6 +53,8 @@ function CurrencyComponent() {
 
   return (
     <>
+    <p> active user: {activeUser.firstName} {activeUser.lastName}</p>
+    <p></p>
       <h1>Convert</h1>
       <CurrencyRow
         currencyOptions={currencyOptions}

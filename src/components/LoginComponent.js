@@ -12,17 +12,26 @@ class LoginComponent extends Component {
         const { email, password } = this.state;
         const localEmail  = localStorage.getItem(`${this.state.email}`);
         const selectedObject =  JSON.parse(localEmail);
-        if( selectedObject && (email === selectedObject.email) && (password === selectedObject.password)){
-            this.setState({
-                loginSuccess: true
-            })
-        }
-        else {
+        if(email && password && selectedObject){
+            if((email === selectedObject.email) && (password === selectedObject.password)){
+                    this.setState({
+                        loginSuccess: true,
+                        activeUser : selectedObject,
+                    })
+                }
+                else {
+                    this.setState({
+                        loginSuccess: false,
+                        error: 'Wrong user'
+                    })
+                }
+        }else{
             this.setState({
                 loginSuccess: false,
                 error: 'Wrong user'
             })
         }
+        
     }
     changeHandler = (e) => {
         const { name, value } = e.target;
@@ -31,21 +40,21 @@ class LoginComponent extends Component {
         })
     }
     render() {
-        const { email, password, loginSuccess, error } = this.state;
+        const { email, password, loginSuccess, error, activeUser } = this.state;
 
         if (loginSuccess){
             return(
-            <CurrencyComponent/>
+            <CurrencyComponent activeUser={activeUser}/>
             )
         }else{
             return (
                 <div>
-                    {error}
+                  <p className="errorname">{error}</p>
             <div className="from-group">
                 <label>
                     Email
                 </label>
-                <input type="Email" name="email" className="form-control" value={email} placeholder="Email" onChange={this.changeHandler} />
+                <input type="email" name="email" className="form-control" value={email} placeholder="Email" onChange={this.changeHandler} />
                 </div>
                 <div className="from-group">
                     <label>
@@ -53,6 +62,7 @@ class LoginComponent extends Component {
                     </label>
         <input type="password"  name = "password" className="form-control" value={password} placeholder="password" onChange={this.changeHandler} />
         </div>
+        <br></br>
         
         <button onClick = {this.handlesubmit} className="btn btn-primary btn-block"> Login</button>
                 </div>
